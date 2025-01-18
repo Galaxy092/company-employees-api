@@ -43,6 +43,13 @@ app.Map("/usingmapbranch", builder =>
         await context.Response.WriteAsync("Hello from the map branch.");
     });
 });
+app.MapWhen(context => context.Request.Query.ContainsKey("testquerystring"), builder =>
+{
+    builder.Run(async context =>
+    {
+        await context.Response.WriteAsync("Hello from the MapWhen branch.");
+    });
+});
 app.Run(async context =>
 {
     Console.WriteLine($"Writing the response to the client in the Run method");
