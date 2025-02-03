@@ -1,4 +1,18 @@
-﻿namespace Shared.Dtos
+﻿using System.Runtime.Serialization;
+
+namespace Shared.Dtos
 {
-    public record CompanyDto(Guid Id, string Name, string FullAddress);
+    [Serializable]
+    [DataContract]
+    public record CompanyDto
+    {
+        [DataMember(Name = "Id")]
+        public Guid Id { get; init; }
+
+        [DataMember(Name = "Name")]
+        public string? Name { get; init; }
+
+        [DataMember(Name = "FullAddress")]
+        public string? FullAddress { get; init; }
+    }
 }
