@@ -18,6 +18,7 @@ builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddControllers(config => {
     config.RespectBrowserAcceptHeader = true;
 }).AddXmlDataContractSerializerFormatters()
+.AddCustomCSVFormatter()
 .AddApplicationPart(typeof(CompanyEmployees.Presentation.AssemblyReference).Assembly);
 // Add services to the container.
 
