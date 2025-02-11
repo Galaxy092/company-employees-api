@@ -1,4 +1,7 @@
 ﻿namespace Shared.Dtos
 {
-    public record CompanyForUpdateDto(string Name, string Address, string Country, IEnumerable<EmployeeForCreationDto> Employees);
+    public record CompanyForUpdateDto: CompanyForManipulationDTO
+    {
+        public IEnumerable<EmployeeForCreationDto>? Employees { get; init; }
+    }
 }

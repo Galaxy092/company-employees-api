@@ -29,6 +29,10 @@ namespace CompanyEmployees.Presentation.Controllers
         {
             if (company is null)
                 return BadRequest("CompanyForCreationDto object is null");
+
+            if (!ModelState.IsValid)
+                return UnprocessableEntity(ModelState);
+
             var createdCompany = _service.CompanyService.CreateCompany(company);
             return CreatedAtRoute("CompanyById", new { id = createdCompany.Id },
             createdCompany);
@@ -62,6 +66,10 @@ namespace CompanyEmployees.Presentation.Controllers
         {
             if (company is null)
                 return BadRequest("CompanyForUpdateDto object is null");
+
+            if (!ModelState.IsValid)
+                return UnprocessableEntity(ModelState);
+
             _service.CompanyService.UpdateCompany(id, company, trackChanges: true);
             return NoContent();
         }
