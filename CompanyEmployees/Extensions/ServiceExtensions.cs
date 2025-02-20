@@ -37,6 +37,9 @@ namespace CompanyEmployees.Extensions
                 {
                     systemTextJsonOutputFormatter.SupportedMediaTypes
                     .Add("application/vnd.polydet.hateoas+json");
+                    systemTextJsonOutputFormatter.SupportedMediaTypes
+                    .Add("application/vnd.polydet.apiroot+json");
+
                 }
 
                 var xmlOutputFormatter = config.OutputFormatters
@@ -47,6 +50,8 @@ namespace CompanyEmployees.Extensions
                 {
                     xmlOutputFormatter.SupportedMediaTypes
                     .Add("application/vnd.polydet.hateoas+xml");
+                    xmlOutputFormatter.SupportedMediaTypes
+                    .Add("application/vnd.polydet.apiroot+xml");
                 }
             });
         }
