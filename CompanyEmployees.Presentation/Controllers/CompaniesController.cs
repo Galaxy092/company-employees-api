@@ -5,6 +5,7 @@ using Service.Contracts;
 using Shared.Dtos;
 namespace CompanyEmployees.Presentation.Controllers
 {
+    [ApiVersion("1.0")]
     [Route("api/companies")]
     [ApiController]
     public class CompaniesController : ControllerBase

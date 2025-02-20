@@ -28,6 +28,7 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
 
 builder.Services.AddScoped<IDataShaper<EmployeeDto>, DataShaper<EmployeeDto>>();
 builder.Services.AddScoped<IEmployeeLinks, EmployeeLinks>();
+builder.Services.ConfigureVersioning();
 builder.Services.AddControllers(config => {
     config.RespectBrowserAcceptHeader = true;
     config.InputFormatters.Insert(0, GetJsonPatchInputFormatter());
