@@ -11,6 +11,14 @@ namespace CompanyEmployees.Presentation.Controllers
     {
         private readonly IServiceManager _service;
         public CompaniesController(IServiceManager service) => _service = service;
+
+        [HttpOptions]
+        public IActionResult GetCompaniesOptions()
+        {
+            Response.Headers.Add("Allow", "GET, OPTIONS, POST");
+            return Ok();
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetCompanies()
         {
