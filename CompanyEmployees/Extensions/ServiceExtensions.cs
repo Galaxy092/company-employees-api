@@ -1,17 +1,17 @@
-﻿using Contracts;
+﻿using AspNetCoreRateLimit;
+using CompanyEmployees.Presentation.Controllers;
+using Contracts;
+using Entities.Models;
 using LoggerService;
-using Microsoft.AspNetCore.Mvc.Formatters;
+using Marvin.Cache.Headers;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
 using Repository;
 using Service.Contracts;
 using Services;
-using CompanyEmployees.Presentation.Controllers;
-using Microsoft.AspNetCore.Mvc.Versioning;
-using Marvin.Cache.Headers;
-using AspNetCoreRateLimit;
-using Entities.Models;
-using Microsoft.AspNetCore.Identity;
 
 namespace CompanyEmployees.Extensions
 {
@@ -95,11 +95,12 @@ namespace CompanyEmployees.Extensions
                 new RateLimitRule
                 {
                     Endpoint = "*",
-                    Limit = 3,
+                    Limit = 30,
                     Period = "5m"
                 }
             };
-            services.Configure<IpRateLimitOptions>(opt => {
+            services.Configure<IpRateLimitOptions>(opt =>
+            {
                 opt.GeneralRules =
             rateLimitRules;
             });
