@@ -38,8 +38,10 @@ builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddAuthentication();
 builder.Services.ConfigureIdentity();
+builder.Services.ConfigureJWT(builder.Configuration);
 
-builder.Services.AddControllers(config => {
+builder.Services.AddControllers(config =>
+{
     config.RespectBrowserAcceptHeader = true;
     config.InputFormatters.Insert(0, GetJsonPatchInputFormatter());
     config.CacheProfiles.Add("120SecondsDuration", new CacheProfile { Duration = 120 });
